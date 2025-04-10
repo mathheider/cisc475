@@ -13,7 +13,7 @@ public class Term {
 
 	private int year; // e.g. 2025
 
-	private Set<CourseInterface> courses = new HashSet<Course>();
+	private Set<CourseInterface> courses = new HashSet<CourseInterface>();
 
 	public Term(String name, int year) {
 		this.name = name;
