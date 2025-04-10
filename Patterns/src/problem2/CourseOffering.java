@@ -1,6 +1,7 @@
 package problem2;
 
 public class CourseOffering {
+	private Course course; // course being offered
 
 	private Term term; // term in which this offering takes place
 
