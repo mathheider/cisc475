@@ -1,6 +1,6 @@
 package problem2;
 
-public class CourseOffering extends Course {
+public class CourseOffering {
 
 	private Term term; // term in which this offering takes place
 

@@ -13,18 +13,18 @@ public class Term {
 
 	private int year; // e.g. 2025
 
-	private Set<Course> courses = new HashSet<Course>();
+	private Set<CourseInterface> courses = new HashSet<Course>();
 
 	public Term(String name, int year) {
 		this.name = name;
 		this.year = year;
 	}
 
-	public boolean addCourse(Course course) {
+	public boolean addCourse(CourseInterface course) {
 		return courses.add(course);
 	}
 
-	public boolean hasCourse(Course course) {
+	public boolean hasCourse(CourseInterface course) {
 		return courses.contains(course);
 	}
 
@@ -34,13 +34,13 @@ public class Term {
 
 	public void print(PrintStream out) {
 		out.println(this + ":");
-		for (Course course : courses)
+		for (CourseInterface course : courses)	
 			out.println("  " + course.toStringLong());
 	}
 	
-	public Collection<Course> getCoursesWithCode(String code) {
-		List<Course> result = new LinkedList<Course>();
-		for (Course course : courses)
+	public Collection<CourseInterface> getCoursesWithCode(String code) {
+		List<CourseInterface> result = new LinkedList<CourseInterface>();
+		for (CourseInterface course : courses)
 			if (code.equals(course.getCode()))
 				result.add(course);
 		return result;
