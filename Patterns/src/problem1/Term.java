@@ -13,18 +13,22 @@ public class Term {
 
 	private int year; // e.g. 2025
 
+<<<<<<< HEAD
 	private Set<CourseInterface> courses = new HashSet<CourseInterface>();
+=======
+	private Set<Course> courses = new HashSet<Course>();
+>>>>>>> parent of 70edab8 (blah)
 
 	public Term(String name, int year) {
 		this.name = name;
 		this.year = year;
 	}
 
-	public boolean addCourse(CourseInterface course) {
+	public boolean addCourse(Course course) {
 		return courses.add(course);
 	}
 
-	public boolean hasCourse(CourseInterface course) {
+	public boolean hasCourse(Course course) {
 		return courses.contains(course);
 	}
 
@@ -34,13 +38,13 @@ public class Term {
 
 	public void print(PrintStream out) {
 		out.println(this + ":");
-		for (CourseInterface course : courses)	
+		for (Course course : courses)
 			out.println("  " + course.toStringLong());
 	}
 	
-	public Collection<CourseInterface> getCoursesWithCode(String code) {
-		List<CourseInterface> result = new LinkedList<CourseInterface>();
-		for (CourseInterface course : courses)
+	public Collection<Course> getCoursesWithCode(String code) {
+		List<Course> result = new LinkedList<Course>();
+		for (Course course : courses)
 			if (code.equals(course.getCode()))
 				result.add(course);
 		return result;

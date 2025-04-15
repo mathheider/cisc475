@@ -1,6 +1,6 @@
 package problem1;
 
-public class Course implements CourseInterface{
+public class Course {
 	private String code = ""; // e.g., "CISC"
 
 	private int number = 0; // e.g., 475

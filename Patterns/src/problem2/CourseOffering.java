@@ -1,7 +1,11 @@
 package problem2;
 
+<<<<<<< HEAD
 public class CourseOffering {
 	private Course course; // course being offered
+=======
+public class CourseOffering extends Course {
+>>>>>>> parent of 70edab8 (blah)
 
 	private Term term; // term in which this offering takes place
 
