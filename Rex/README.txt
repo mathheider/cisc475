@@ -76,3 +76,10 @@ To build from command line: type "make".  Type "make test1" to run a
 test.  See the Makefile for further details.
 
 This project is also configured as an Eclipse project.
+
+Critique of Design v1
+Looking at the current Rex design, there are many problems with how it's structured. It follows what Parnas calls a "flowchart-based decomposition," which isn't ideal. Instead of organizing modules to hide design decisions that might change later, Rex just breaks things down into processing steps.
+Parnas says in his paper that "it is almost always incorrect to begin the decomposition of a system into modules on the basis of a flowchart." This applies to Rex, where we see modules passing around shared data structures.
+Take the Output module, for example. It needs to know about all sorts of data from earlier modules (chars, probStarts, probStops, and so on). This creates a web of dependencies that makes the system rigid and hard to change.
+Another problem is how knowledge about LaTeX formatting is scattered across different modules. If we ever wanted to support a different format, we'd have to hunt through multiple places to update the code.
+A better approach would be to redesign with information hiding in mind. This would give us a system that's easier to maintain and adapt as requirements evolve over time.
