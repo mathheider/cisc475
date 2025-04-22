@@ -46,11 +46,6 @@ public class LatexExamParser {
             }
 
              int problemEnd = fullContent.indexOf(END_PROBLEM, problemStart);
-             if (problemEnd == -1) {
-                 System.err.println("Error: Found " + BEGIN_PROBLEM + " without matching " + END_PROBLEM);
-                 model.setEpilogueText(fullContent.substring(problemStart).trim());
-                 break;
-             }
              problemEnd += END_PROBLEM.length();
 
              String problemText = fullContent.substring(problemStart, problemEnd);
