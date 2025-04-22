@@ -1,0 +1,15 @@
+We decided to distinguish a course, which is a concept that
+persists from year to year, from an offering of a course, which occurs
+in a single term only.  A Course has a code, number, and name.  A 
+CourseOffering has all of those features, and also a building, room,
+capacity, etc.
+
+In this version, we used inheritance: a CourseOffering extends a
+Course.  After all, a CourseOffering has all fields of a Course, plus
+some.  Right?
+
+Wrong.   Would you say a "CourseOffering is a Course"?  No.  It is not
+a kind of Course.  It is something different.  Using inheritance in this
+way is bound to lead to problems down the road.    
+
+Refactor this code to use the Delegation Pattern rather than inheritance.

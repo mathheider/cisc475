@@ -1,0 +1,22 @@
+Here you find a simple class to represent a list of integers.
+The class stores the list of ints as an array.
+It provides a mutation method to change the first element.
+It also provides methods to get the first element, the tail (or "rest" of the
+list after removing the first element).
+And it provides a method to form a new list in which the first element
+is given and the rest of the list is this list.
+Look at the test ListTest.java, run it, and make sure it makes sense.
+
+You have found that your application suffers from poor performance in
+both time and memory.   To solve this problem, you have decided to
+redo this NumList package using the Immutable Pattern.
+
+The new code has been started; you must complete it.  It involves
+3 classes: (1) ImmutableNumList, the root of the type hierarchy,
+(2) EmptyNumList, which represents the empty immutable list, and
+(3) NonemptyNumList, which represents any nonempty immutable list.
+The interface is not exactly the same as the mutable version, but it
+is close.   See the test ImmutableListTest.java which corresponds
+to the mutable version ListTest.java.
+
+Try to complete the code so that the test passes.

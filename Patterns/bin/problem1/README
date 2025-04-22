@@ -1,0 +1,6 @@
+In this program, class Term uses class Course directly.
+This could become problematic as the system changes and new kinds of Courses
+are added and other changes are made.
+It would be better to decouple these two classes.
+Apply the Interface pattern by creating an interface for Course
+and modifying Term to use that interface.
