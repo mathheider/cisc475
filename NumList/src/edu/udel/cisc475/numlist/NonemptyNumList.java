@@ -74,4 +74,27 @@ public class NonemptyNumList extends ImmutableNumList {
 	public int hashCode() {
 		return first + rest.hashCode();
 	}
+	
+	public ImmutableNumList append(ImmutableNumList that) {
+		return new NonemptyNumList(this.first, this.rest.append(that));
+	}
+
+	@Override
+	public ImmutableNumList removeZeros() {
+		ImmutableNumList processed = this.rest.removeZeros();
+		
+		if (this.first == 0) {
+			return processed;
+		} else {
+			return new NonemptyNumList(this.first, processed);
+		}
+	}
+
+	@Override
+	public ImmutableNumList addToAll(int x) {
+		int newFirst = this.first + x;
+		ImmutableNumList newRest = this.rest.addToAll(x);
+		return new NonemptyNumList(newFirst, newRest);
+	}
+
 }

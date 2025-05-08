@@ -45,17 +45,17 @@ public abstract class ImmutableNumList {
 	 * Returns the list obtained by appending that list to the end of this one.
 	 * [675 only]
 	 */
-	// public abstract ImmutableNumList append(ImmutableNumList that);
+	public abstract ImmutableNumList append(ImmutableNumList that);
 
 	/**
 	 * Returns the list obtained by removing all zeros from this one . [675
 	 * only]
 	 */
-	// public abstract ImmutableNumList removeZeros();
+	public abstract ImmutableNumList removeZeros();
 
 	/**
 	 * Returns the list obtained by adding {@code x} to every element of this
 	 * list. [675 only]
 	 */
-	// public abstract ImmutableNumList addToAll(int x);
+	public abstract ImmutableNumList addToAll(int x);
 }

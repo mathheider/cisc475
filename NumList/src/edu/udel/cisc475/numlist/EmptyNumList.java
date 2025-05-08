@@ -41,4 +41,18 @@ public class EmptyNumList extends ImmutableNumList {
 	public int hashCode() {
 		return 234823; // just some randomly chosen int
 	}
+	public ImmutableNumList append(ImmutableNumList that) {
+		return that;
+	}
+
+	@Override
+	public ImmutableNumList removeZeros() {
+		return this; 
+	}
+
+	
+	@Override
+	public ImmutableNumList addToAll(int x) {
+		return this; 
+	}
 }
