@@ -1,0 +1,23 @@
+This package contains a little implementation of a Directed Graph.
+Such a graph consists of a list of Nodes.
+Each Node has an ID number and a list of successor (next) nodes.
+There is a method to add a new Node to the graph.
+After adding a new node, one can add edges by adding successor nodes
+to that node.
+There is also a method to determine whether the graph is acyclic.
+See and run GraphDemo for a simple example of how to use this package.
+
+The DirectedGraph class is hard to reuse.   The problem is that the
+creation of instances of PlainNode is hard-wired into this class.   The
+problem is illustrated when I want to use the DirectedGraph for a
+new kind of node, the CFGNode.  I can't reuse DirectedGraph for
+CFGNode without making a large number of changes to the code.
+
+Refactor this implementation to use the Abstract Factory Pattern.
+Instead of creating new nodes directly, the DirectedGraph should
+delegate this task to a node factory.  Different node factories can
+make different kinds of nodes.  As long as those nodes implement
+a given interface, they will all work with the DirectedGraph.
+Illustrate the successful refactoring by adding some methods
+to GraphDemo to show that DirectedGraph can be used with the original
+plain nodes and the new CFGNodes with no changes to its code.
