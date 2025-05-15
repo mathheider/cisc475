@@ -4,44 +4,41 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-/**
- * A plain node in a directed graph. It stores an integer ID number, a text
- * field, and its list of successor nodes. For each successor node v, there is
- * an edge in the graph from this node to v.
- */
-public class PlainNode {
+public class PlainNode extends Node { 
 
-	private int id;
+    private String text;
+    private Set<PlainNode> successors = new LinkedHashSet<>();
 
-	private String text;
+    PlainNode(int id) {
+        super(id);
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	private Set<PlainNode> successors = new LinkedHashSet<>();
+    @Override
+    public String getText() {
+        return text;
+    }
+    void addSuccessor(PlainNode that) {
+        successors.add(that);
+    }
 
-	PlainNode(int id) {
-		this.id = id;
-	}
+    @Override
+    public void addSuccessor(Node successor) {
+        if (successor instanceof PlainNode) {
+            this.addSuccessor((PlainNode) successor); // Call the specific method above
+        } else {
+            throw new IllegalArgumentException("Cannot add successor of type " +
+                                               successor.getClass().getName() +
+                                               " to a PlainNode. Expected PlainNode.");
+        }
+    }
 
-	public int getId() {
-		return id;
-	}
+    @Override
+    public Collection<PlainNode> successors() { 
+    	return successors;
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    }
 
-	public String getText() {
-		return text;
-	}
-
-	public String toString() {
-		return "Node[" + id + ", " + getText() + "]";
-	}
-
-	void addSuccessor(PlainNode that) {
-		successors.add(that);
-	}
-
-	public Collection<PlainNode> successors() {
-		return successors;
-	}
 }

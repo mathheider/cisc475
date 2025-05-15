@@ -4,75 +4,77 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-/**
- * A node in a Control Flow Graph. In addition to an integer ID, the node
- * contains information such as the line number, the source code, and the kind
- * of CFG node represented.
- */
-public class CFGNode {
+public class CFGNode extends Node { // Extend Node
 
-	/** The different kinds of CFG nodes. */
-	public enum CFGNodeKind {
-		ASSIGN, BRANCH, NOOP, CALL
-	};
+    public enum CFGNodeKind {
+        ASSIGN, BRANCH, NOOP, CALL
+    }
 
-	/** Unique node ID number */
-	private int id;
 
-	/** Line number for this CFG node. */
-	private int lineno;
+    int lineno; 
+    String sourceCode; 
+    CFGNodeKind kind; 
+    
+    private Set<CFGNode> successors = new LinkedHashSet<>();
 
-	/** Get source code corresponding to this node */
-	private String sourceCode;
+    public CFGNode(int id) {
+        super(id); // Call the superclass (Node) constructor
+    }
 
-	/** The kind of this CFG node */
-	private CFGNodeKind kind;
+    public void setKind(CFGNodeKind kind) {
+        this.kind = kind;
+    }
 
-	/** List of successor nodes */
-	private Set<CFGNode> successors = new LinkedHashSet<>();
+    public CFGNodeKind getKind() {
+        return kind;
+    }
 
-	public CFGNode(int id) {
-		this.id = id;
-	}
+    public void setLineno(int lineno) {
+        this.lineno = lineno;
+    }
 
-	public void setKind(CFGNodeKind kind) {
-		this.kind = kind;
-	}
+    public int getLineno() {
+        return lineno;
+    }
 
-	public CFGNodeKind getKind() {
-		return kind;
-	}
+    public void setSourceCode(String sourceCode) {
+        this.sourceCode = sourceCode;
+    }
 
-	public void setLineno(int lineno) {
-		this.lineno = lineno;
-	}
+    public String getSourceCode() {
+        return sourceCode;
+    }
 
-	public int getLineno() {
-		return lineno;
-	}
+    @Override
+    public String getText() {
+        StringBuilder sb = new StringBuilder();
+        if (sourceCode != null && !sourceCode.isEmpty()) {
+            sb.append(sourceCode);
+        } else {
+            sb.append("CFGNode");
+        }
+        sb.append(" (Kind: ").append(kind != null ? kind : "N/A");
+        sb.append(", Line: ").append(lineno > 0 ? lineno : "N/A").append(")");
+        return sb.toString();
+    }
 
-	public void setSourceCode(String sourceCode) {
-		this.sourceCode = sourceCode;
-	}
+    void addSuccessor(CFGNode that) {
+        successors.add(that);
+    }
+    @Override
+    public void addSuccessor(Node successor) {
+        if (successor instanceof CFGNode) {
+            this.addSuccessor((CFGNode) successor); 
+        } else {
+            throw new IllegalArgumentException("Cannot add successor of type " +
+                                               successor.getClass().getName() +
+                                               " to a CFGNode. Expected CFGNode.");
+        }
+    }
 
-	public String getSourceCode() {
-		return sourceCode;
-	}
+    @Override
+    public Collection<CFGNode> successors() {
+        return successors;
+    }
 
-	public String toString() {
-		return "Node[" + id + ", " + getText() + "]";
-	}
-
-	public String getText() {
-		return "kind=" + kind + ", lineno=" + lineno + ", sourceCode=\""
-				+ sourceCode + "\"";
-	}
-
-	void addSuccessor(CFGNode that) {
-		successors.add(that);
-	}
-
-	public Collection<CFGNode> successors() {
-		return successors;
-	}
 }
