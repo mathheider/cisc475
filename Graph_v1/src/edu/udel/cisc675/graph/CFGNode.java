@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class CFGNode extends Node { // Extend Node
+public class CFGNode extends Node { 
 
     public enum CFGNodeKind {
         ASSIGN, BRANCH, NOOP, CALL
@@ -18,7 +18,7 @@ public class CFGNode extends Node { // Extend Node
     private Set<CFGNode> successors = new LinkedHashSet<>();
 
     public CFGNode(int id) {
-        super(id); // Call the superclass (Node) constructor
+        super(id); 
     }
 
     public void setKind(CFGNodeKind kind) {
