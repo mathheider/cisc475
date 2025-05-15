@@ -69,7 +69,7 @@ public class DirectedGraph {
     class CycleSearcher {
         private Set<Node> stack = new HashSet<>();      
         private Set<Node> visited = new HashSet<>();    
-        private boolean searchForCycle(Node u) {        
+        private boolean searchForCycle(Node u) {        // Parameter changed to Node
             if (visited.contains(u))
                 return false;
             if (stack.contains(u))
